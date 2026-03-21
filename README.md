@@ -2,8 +2,6 @@
   <img src="https://capsule-render.vercel.app/api?type=rect&color=0:000000,100:111111&height=180&section=header&text=OBSIDIAN&fontSize=70&fontColor=00ffcc&animation=fadeIn&fontAlignY=50" />
 </p>
 
-# OBSIDIAN
-
 ![status](https://img.shields.io/badge/status-stable-black)
 ![python](https://img.shields.io/badge/python-3.x-blue)
 ![license](https://img.shields.io/badge/license-MIT-grey)
