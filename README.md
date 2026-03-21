@@ -1,128 +1,158 @@
-![banner](https://publicdomainpictures.net/pictures/250000/t2/cyber-security-1515836154wzI.jpg)
+# OBSIDIAN
 
+```
 ██████╗ ██████╗ ███████╗██╗██████╗ ██╗ █████╗ ███╗   ██╗
 ██╔═══██╗██╔══██╗██╔════╝██║██╔══██╗██║██╔══██╗████╗  ██║
 ██║   ██║██████╔╝███████╗██║██████╔╝██║███████║██╔██╗ ██║
 ██║   ██║██╔══██╗╚════██║██║██╔══██╗██║██╔══██║██║╚██╗██║
 ╚██████╔╝██████╔╝███████║██║██║  ██║██║██║  ██║██║ ╚████║
  ╚═════╝ ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+```
 
-# OBSIDIAN
+![status](https://img.shields.io/badge/status-stable-black)
+![python](https://img.shields.io/badge/python-3.x-blue)
+![license](https://img.shields.io/badge/license-MIT-grey)
 
-Deterministic file analysis engine focused on entropy profiling, integrity verification, and anomaly detection.
-
----
-
-## Profile
-
-OBSIDIAN is built for environments where visibility matters more than automation.  
-It performs low-level inspection of files using mathematical and cryptographic methods without abstraction layers.
-
-This is not a scanner.  
-This is an analysis engine.
+Deterministic binary inspection engine for entropy profiling and integrity verification.
 
 ---
 
-## Core Capabilities
+## Overview
 
-- Shannon entropy calculation across binary data  
-- SHA-256 hashing for integrity verification  
-- Recursive filesystem traversal  
-- Structured logging with persistent output  
-- Deterministic results without external dependencies  
+OBSIDIAN is a low-level file analysis tool built for precise, repeatable inspection of binary data.
+
+It operates directly on raw bytes and produces deterministic outputs using strict mathematical methods.  
+No heuristics, no probabilistic models, no external services.
+
+---
+
+## Features
+
+- Shannon entropy computation (byte-level)
+- SHA-256 hashing for integrity validation
+- Recursive directory traversal
+- Structured logging output
+- Deterministic execution model
+- Zero external dependencies
 
 ---
 
 ## Architecture
 
+```
 core/
-  analyzer.py   -> entropy + hashing engine  
-  logger.py     -> structured logging system  
+ ├── analyzer.py       # entropy + hashing primitives
+ └── logger.py         # structured logging
 
 modules/
-  entropy_scan.py  -> directory traversal and execution  
+ └── entropy_scan.py   # traversal + execution logic
 
-main.py           -> execution entry point  
+main.py                # entry point
+```
 
 ---
 
-## Execution Model
+## Execution Pipeline
 
 1. Traverse target directory  
-2. Read file as raw bytes  
-3. Compute entropy distribution  
+2. Read files as raw byte streams  
+3. Compute entropy values  
 4. Generate SHA-256 digest  
-5. Log structured output  
+5. Emit structured log output  
+
+Execution is linear and state-independent.
 
 ---
 
 ## Usage
 
+```bash
 python main.py
+```
 
-Enter target directory when prompted:
+Input:
 
+```
 /path/to/target
+```
 
 ---
 
-## Output Behavior
+## Output
 
-Each file produces a structured record:
-
-[INFO] File: /data/archive.bin  
-Hash: 9f86d081884c7d659a2fe...  
-Entropy: 7.91  
-
----
-
-## Interpretation
-
-0.0 – 4.0    -> Low complexity (text / structured data)  
-4.0 – 7.0    -> Mixed content  
-7.0 – 8.0    -> High entropy (compressed / encrypted / packed)  
+```
+[INFO] File: /data/archive.bin
+Hash: 9f86d081884c7d659a2feaa0c55ad015...
+Entropy: 7.91
+```
 
 ---
 
-## Design Principles
+## Entropy Scale
 
+| Range       | Meaning                                |
+|------------|----------------------------------------|
+| 0.0 – 4.0  | Low entropy (text / structured data)   |
+| 4.0 – 7.0  | Mixed content                          |
+| 7.0 – 8.0  | High entropy (compressed/encrypted)    |
+
+---
+
+## CLI (planned)
+
+```bash
+python main.py --path /target --json --threads 4
+```
+
+---
+
+## Design Constraints
+
+- No abstraction layers  
 - No hidden processing  
-- No external services  
-- No machine learning  
-- Direct binary inspection only  
+- No signature databases  
+- No machine learning components  
+- No automatic classification  
+
+All outputs are directly derived from input data.
 
 ---
 
 ## Use Cases
 
-- Identify packed or encrypted files  
-- Verify file integrity across environments  
-- Detect anomalous binaries in datasets  
-- Pre-analysis before reverse engineering  
+- Detection of packed or encrypted binaries  
+- File integrity verification across environments  
+- Entropy-based anomaly detection  
+- Pre-analysis for reverse engineering  
+- Dataset inspection in forensic workflows  
 
 ---
 
 ## Limitations
 
-- No file type inference  
-- No signature database  
-- No automatic classification  
-
-This is intentional.
+- No file type detection  
+- No signature matching  
+- No behavioral analysis  
+- No automatic labeling  
 
 ---
 
 ## Roadmap
 
 - JSON output mode  
-- Parallel file processing  
-- Signature matching module  
+- Parallel processing  
 - CLI argument support  
+- Signature matching module  
 
 ---
 
 ## Environment
 
-Designed for controlled lab environments and workflows.
+Designed for controlled environments including:
+
+- Security research labs  
+- Reverse engineering workflows  
+- Forensic analysis pipelines  
 
 ---
+
